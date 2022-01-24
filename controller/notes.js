@@ -3,12 +3,17 @@ const Notes = require('../models/note');
 const NotesType = require('../models/notetype');
 const { Op } = require('sequelize');
 const paginate = require('express-paginate');
-
+const { validationResult } = require('express-validator');
 const { connectedUsers, io } = require('../app');
 
 const NotesController = {
   sendNote: async (req, res) => {
     const { noteName, noteMessage, typeId, users } = req.body;
+
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
 
     if (!noteName || !noteMessage || !typeId || !users) {
       res.status(400).json({ msg: 'Invalid Credentials' });
