@@ -17,6 +17,10 @@ const User = sequelize.define(
     picture: {
       type: Sequelize.STRING,
     },
+    notifications: {
+      type: Sequelize.BOOLEAN,
+      defaultValue: false,
+    },
   },
   {
     tableName: 'users',

@@ -16,7 +16,7 @@ const NoteType = sequelize.define(
     },
     disable: {
       type: Sequelize.BOOLEAN,
-      default: false,
+      defaultValue: false,
     },
   },
   {

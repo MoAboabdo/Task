@@ -18,6 +18,10 @@ const Note = sequelize.define('note', {
   mediaFiles: {
     type: Sequelize.STRING,
   },
+  archived: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
+  },
 });
 
 module.exports = Note;
